@@ -1,0 +1,279 @@
+# 🎓 Complete React Master Syllabus (100% Roadmap)
+
+This is the complete, comprehensive topic syllabus for React. It is divided into **Part 1: The Foundational 50%** and **Part 2: The Advanced 50%**, with every hook, pattern, and architectural topic explicitly cataloged.
+
+---
+
+## 🧭 High-Level Structure
+
+```mermaid
+graph LR
+    subgraph Part1["Part 1: The Foundational 50%"]
+        direction TB
+        P1A["1. Core Fundamentals & JSX"]
+        P1B["2. Component Architecture"]
+        P1C["3. Props & Data Flow"]
+        P1D["4. Conditional & List Rendering"]
+        P1E["5. Event Handling & Synthetic Events"]
+        P1F["6. Foundational Hooks (useState, useRef)"]
+        P1G["7. State Patterns & Lifting State"]
+        P1H["8. Forms (Controlled vs Uncontrolled)"]
+    end
+
+    subgraph Part2["Part 2: The Advanced 50%"]
+        direction TB
+        P2A["9. Lifecycle & Effect Hooks"]
+        P2B["10. Advanced State (useReducer, Context)"]
+        P2C["11. Performance Hooks (useMemo, useCallback)"]
+        P2D["12. Concurrent & React 19 Hooks"]
+        P2E["13. Custom Hooks Architecture"]
+        P2F["14. Error Boundaries & Portals"]
+        P2G["15. Routing (React Router)"]
+        P2H["16. Data Fetching & External State"]
+        P2I["17. Virtual DOM & Fiber Architecture"]
+    end
+
+    Part1 --> Part2
+```
+
+---
+
+# 📦 PART 1: The Foundational 50%
+
+---
+
+### Module 1: Core Fundamentals & Virtual DOM
+- [ ] What is React? (Library vs Framework, SPA vs MPA)
+- [ ] React DOM vs React Core
+- [ ] The Virtual DOM (VDOM) mental model
+- [ ] Reconciliation & Diffing Algorithm overview
+- [ ] React root mounting (`createRoot` from `react-dom/client`)
+- [ ] `StrictMode` and why it renders twice in development
+
+### Module 2: JSX (JavaScript XML) In-Depth
+- [ ] JSX compilation under the hood (`React.createElement` / JSX transform)
+- [ ] JSX Syntax rules (Single root, self-closing tags, camelCase attributes)
+- [ ] HTML vs JSX attribute differences (`className`, `htmlFor`, `tabIndex`, `style` object)
+- [ ] Embedding JavaScript expressions with curly braces `{}`
+- [ ] React Fragments (`<React.Fragment>` vs `<> ... </>`)
+- [ ] Rendering strings, numbers, booleans, null, and undefined in JSX
+- [ ] White space handling & HTML entity decoding in JSX
+
+### Module 3: Component Architecture
+- [ ] Functional Components vs Legacy Class Components
+- [ ] Pure Functions & Component Purity rules
+- [ ] Component Composition (building UI trees)
+- [ ] File organization & folder structuring conventions
+- [ ] Exporting and importing components (Default vs Named exports)
+
+### Module 4: Props & One-Way Data Flow
+- [ ] Passing props from Parent to Child
+- [ ] Props Destructuring (standard, nested, and default prop values)
+- [ ] The special `children` prop (Containment & Slots pattern)
+- [ ] Prop Types & Type Safety (`PropTypes` / TypeScript interfaces)
+- [ ] Props immutability (Why props are read-only)
+- [ ] Passing functions as props (Callback props)
+
+### Module 5: Conditional Rendering
+- [ ] `if / else` statements outside JSX
+- [ ] Ternary operator (`condition ? <A /> : <B />`)
+- [ ] Logical AND operator (`condition && <Element />`)
+- [ ] The falsy `0` bug in logical AND and how to prevent it
+- [ ] Early returns (`if (!data) return null;`)
+- [ ] Switch-case statements & Object mapping patterns for multi-state UI
+
+### Module 6: Rendering Lists & Keys
+- [ ] Transforming arrays using JavaScript `.map()`
+- [ ] Filtering before rendering (`.filter().map()`)
+- [ ] The `key` prop: What it is and why React requires it
+- [ ] How React uses keys for VDOM identity & element recycling
+- [ ] Pitfalls of using array `index` as a key
+- [ ] Rendering nested arrays and multi-dimensional lists
+
+### Module 7: Event Handling & Synthetic Events
+- [ ] Adding event listeners in JSX (`onClick`, `onChange`, `onSubmit`, `onKeyDown`, etc.)
+- [ ] Passing a function reference vs calling a function inline
+- [ ] Passing arguments to event handlers via arrow functions
+- [ ] React's Synthetic Event Wrapper (`SyntheticEvent`)
+- [ ] Event methods: `e.preventDefault()` and `e.stopPropagation()`
+- [ ] Event pooling (legacy) vs modern event delegation
+
+### Module 8: Foundational Hooks — State & References
+- [ ] **Rules of Hooks**: Only call at top level, only call from React functions
+- [ ] **`useState` Hook**:
+  - Initial state values & lazy state initialization (`useState(() => expensiveComputation())`)
+  - State updater function syntax (`setState(prev => prev + 1)`)
+  - State as a snapshot (Why state doesn't update immediately on the next line)
+  - Batching of state updates (Automatic batching in React 18+)
+- [ ] **`useRef` Hook**:
+  - Storing mutable values that do **not** trigger a re-render
+  - Accessing direct DOM elements (`ref={myInputRef}`)
+  - Tracking previous state with refs
+  - Storing timer / interval IDs (`setInterval`, `setTimeout`)
+
+### Module 9: State Architecture & Immutability Patterns
+- [ ] Immutability rules in JavaScript & React
+- [ ] Updating arrays in state:
+  - Adding items: `[...prev, newItem]`
+  - Removing items: `prev.filter(...)`
+  - Updating items: `prev.map(...)`
+  - Sorting & reversing: `[...prev].sort(...)`
+- [ ] Updating objects in state:
+  - Shallow copies using the spread operator `{ ...prev, field: value }`
+  - Updating deeply nested objects
+- [ ] **Lifting State Up**: Sharing state between sibling components
+- [ ] **Derived State**: Calculating values on-the-fly during render vs redundant state
+
+### Module 10: Forms & User Input
+- [ ] **Controlled Components**: Binding `value` to state + listening to `onChange`
+- [ ] **Uncontrolled Components**: Reading values using `useRef` or `FormData`
+- [ ] Handling multiple inputs with a single state object `[e.target.name]: e.target.value`
+- [ ] Checkboxes, Radio buttons, Select dropdowns, and Textareas
+- [ ] Form submission handling (`onSubmit` + `e.preventDefault()`)
+- [ ] Basic client-side validation techniques
+
+---
+
+# 🚀 PART 2: The Advanced 50%
+
+---
+
+### Module 11: Lifecycle & Effect Hooks
+- [ ] Component Lifecycle stages: Mounting, Updating, Unmounting
+- [ ] **`useEffect` Hook**:
+  - Running on every render (no dependency array)
+  - Running only on mount (`[]` empty dependency array)
+  - Running on specific prop/state changes (`[propA, stateB]`)
+  - Cleanup functions (canceling subscriptions, removing event listeners, clearing timers)
+  - When **NOT** to use `useEffect` (derived state, user event handling)
+- [ ] **`useLayoutEffect` Hook**:
+  - Synchronous execution before screen repaint
+  - Measuring DOM elements before paint (preventing layout flickers)
+- [ ] **`useInsertionEffect` Hook**:
+  - CSS-in-JS library optimization before DOM mutations
+
+### Module 12: Advanced State & Global Architecture
+- [ ] **`useReducer` Hook**:
+  - State, Actions, and Reducer pure functions `(state, action) => newState`
+  - The `dispatch` function
+  - When to choose `useReducer` over `useState`
+- [ ] **React Context API**:
+  - Solving Prop Drilling
+  - Creating context with `createContext`
+  - Providing values with `<MyContext.Provider value={...}>`
+  - Consuming values with the **`useContext` Hook**
+  - Performance considerations: Splitting contexts to avoid excessive re-renders
+
+### Module 13: Performance Optimization Hooks & Techniques
+- [ ] Why React re-renders: Props change, State change, Parent re-render
+- [ ] **`React.memo`**: Memoizing functional components against parent re-renders
+- [ ] **`useMemo` Hook**: Caching expensive calculations between renders
+- [ ] **`useCallback` Hook**: Caching function definitions between renders to maintain referential equality
+- [ ] **`useId` Hook**: Generating unique, accessible IDs for form fields that match on SSR
+- [ ] React DevTools Profiler (Flamecharts, Ranked charts, identifying wasted renders)
+
+### Module 14: Concurrent Rendering & React 19 Hooks
+- [ ] What is Concurrent React? (Interruptible rendering)
+- [ ] **`useTransition` Hook**: Marking non-urgent state updates (`isPending`, `startTransition`)
+- [ ] **`useDeferredValue` Hook**: Deferring re-renders for non-critical UI sections
+- [ ] **`useOptimistic` Hook (React 19)**: Showing immediate UI state while async mutations finish
+- [ ] **`useActionState` Hook (React 19)**: Managing async form submissions, pending state, and errors
+- [ ] **`useFormStatus` Hook (React 19)**: Reading parent form submission state inside submit buttons
+- [ ] **`use` API (React 19)**: Reading Promises and Context directly inside conditionals
+
+### Module 15: Specialized Hooks
+- [ ] **`useImperativeHandle` Hook**: Customizing ref values exposed to parent components (paired with `forwardRef`)
+- [ ] **`useSyncExternalStore` Hook**: Subscribing to external non-React state stores safely without tearing
+- [ ] **`useDebugValue` Hook**: Adding custom labels in React DevTools for custom hooks
+
+### Module 16: Custom Hooks (Creating Your Own Hooks)
+- [ ] **What is a Custom Hook?** (Extracting & reusing stateful logic across components)
+- [ ] **The "use" Prefix Rule:** Why the linter requires hook names to start with `use` (e.g., `useFetch`, `useAuth`)
+- [ ] **Crucial Rule:** Custom hooks share **stateful logic**, NOT state itself (every component that calls the hook gets its own isolated, independent state)
+- [ ] **Return Patterns:**
+  - Tuple/Array return pattern: `const [value, setValue] = useToggle(false)` (flexible naming)
+  - Object return pattern: `const { data, isLoading, error, refetch } = useFetch(url)` (easy destructuring)
+- [ ] **Composing Hooks Inside Hooks:** Using `useState`, `useEffect`, `useRef`, and `useCallback` together inside a custom hook
+- [ ] **Passing arguments and options** to custom hooks (e.g., debounce delay, storage keys)
+- [ ] **Catalog of 15 Essential Custom Hooks to Build & Master:**
+  1. `useToggle` — Toggling booleans (modals, dropdowns, themes)
+  2. `useCounter` — Increment, decrement, reset, min/max bounds
+  3. `useLocalStorage` / `useSessionStorage` — Syncing component state with browser storage
+  4. `usePrevious` — Remembering previous props or state values using `useRef`
+  5. `useFetch` / `useAsync` — Managing loading, data, error, and aborting fetch on unmount
+  6. `useDebounce` — Delaying search input queries to save API requests
+  7. `useThrottle` — Rate-limiting scroll or resize events
+  8. `useOnClickOutside` — Detecting clicks outside a dropdown/modal to close it
+  9. `useWindowSize` — Listening to browser window resize for responsive JS
+  10. `useMediaQuery` — Matching CSS media queries inside JavaScript
+  11. `useInterval` / `useTimeout` — Declarative timer hooks that handle React re-renders cleanly
+  12. `useEventListener` — Safe, auto-cleaning DOM event listeners on `window` or elements
+  13. `useCopyToClipboard` — Copying text to clipboard with temporary "Copied!" feedback
+  14. `useOnlineStatus` — Detecting network online/offline transitions (`navigator.onLine`)
+  15. `useForm` — Reusable form state, error tracking, and input change handlers
+
+### Module 17: Advanced Component Patterns & Error Handling
+- [ ] **Portals (`createPortal`)**: Rendering outside the parent DOM tree (Modals, Tooltips, Toasts)
+- [ ] **Error Boundaries**: Class components with `componentDidCatch` & `getDerivedStateFromError` (or `react-error-boundary`)
+- [ ] **Suspense**: Declarative loading fallbacks (`<Suspense fallback={<Spinner />}>`)
+- [ ] Code Splitting & Dynamic Lazy Loading (`React.lazy` + `import()`)
+- [ ] Higher-Order Components (HOC) pattern (historical & utility usage)
+- [ ] Render Props pattern
+
+### Module 18: Client-Side Routing (React Router v6/v7)
+- [ ] SPA Client-Side Routing vs Server-Side Routing
+- [ ] `BrowserRouter`, `Routes`, and `Route`
+- [ ] Navigation: `<Link>`, `<NavLink>`, and `useNavigate` hook
+- [ ] Dynamic Routing & URL Params: `useParams` (e.g., `/products/:id`)
+- [ ] Query Strings & Search Params: `useSearchParams` (e.g., `?sort=price&page=2`)
+- [ ] Nested Routes & Layouts with `<Outlet />`
+- [ ] Protected / Authenticated Routes
+- [ ] Loaders, Actions, and Error Elements in modern React Router
+
+### Module 19: Asynchronous Data Fetching & Server State
+- [ ] Fetching with native `fetch` / Axios inside `useEffect` (and race-condition cleanup)
+- [ ] Limitations of `useEffect` for data fetching (caching, deduplication, retry, background refresh)
+- [ ] Server State Management with **TanStack Query (React Query)** / SWR:
+  - `useQuery` for fetching, caching, and stale-while-revalidate
+  - `useMutation` for POST/PUT/DELETE operations
+  - Query invalidation and optimistic updates
+
+### Module 20: Global State Management Libraries
+- [ ] When is Context API not enough? (Frequent updates, selector subscriptions)
+- [ ] **Zustand**: Lightweight, hook-based global state
+- [ ] **Redux Toolkit (RTK)**: Slices, Store, `useSelector`, `useDispatch`, RTK Query
+
+### Module 21: Modern Ecosystem & Next Steps
+- [ ] CSS Approaches: CSS Modules, Tailwind CSS, Styled Components / Emotion
+- [ ] React Server Components (RSC) vs Client Components (`'use client'`)
+- [ ] Introduction to Next.js (SSR, SSG, ISR, App Router)
+- [ ] Testing React Applications: Vitest/Jest + React Testing Library (RTL)
+
+---
+
+## 🪝 The Complete React Hooks Reference Table
+
+Here is every hook in the official React specification and its designated phase:
+
+| Hook Name | Category | Primary Purpose | Phase |
+| :--- | :--- | :--- | :---: |
+| **`useState`** | State | Component memory / local state | **Part 1 (50%)** |
+| **`useRef`** | Ref | DOM element references & mutable values without re-renders | **Part 1 (50%)** |
+| **`useEffect`** | Effect | Side effects, subscriptions, API calls, timers | **Part 2 (50%)** |
+| **`useReducer`** | State | Complex state transitions with actions & dispatch | **Part 2 (50%)** |
+| **`useContext`** | Context | Consuming global context without prop drilling | **Part 2 (50%)** |
+| **`useMemo`** | Performance | Caching expensive calculation outputs | **Part 2 (50%)** |
+| **`useCallback`** | Performance | Caching function references between renders | **Part 2 (50%)** |
+| **`useLayoutEffect`** | Effect | Synchronous DOM measurements before screen repaint | **Part 2 (50%)** |
+| **`useId`** | Accessibility | Generating unique, accessible IDs for form fields | **Part 2 (50%)** |
+| **`useTransition`** | Concurrent | Non-blocking background state transitions | **Part 2 (50%)** |
+| **`useDeferredValue`** | Concurrent | Deferring re-renders for heavy UI elements | **Part 2 (50%)** |
+| **`useImperativeHandle`** | Ref | Exposing custom methods from a child component ref | **Part 2 (50%)** |
+| **`useInsertionEffect`** | Effect | Injecting styles before DOM mutations (CSS-in-JS) | **Part 2 (50%)** |
+| **`useSyncExternalStore`** | Store | Safe subscription to third-party external data stores | **Part 2 (50%)** |
+| **`useDebugValue`** | Debugging | Custom labels in React DevTools for custom hooks | **Part 2 (50%)** |
+| **`useOptimistic`** *(v19)* | Action | Instant optimistic UI updates during async mutations | **Part 2 (50%)** |
+| **`useActionState`** *(v19)* | Action | Handling form action state, errors, and pending flags | **Part 2 (50%)** |
+| **`useFormStatus`** *(v19)* | Action | Checking submission status of a parent `<form>` | **Part 2 (50%)** |
+| **`use` API** *(v19)* | Async/Context | Reading Promises and Context dynamically inside conditionals | **Part 2 (50%)** |
+| **`Custom Hooks`** (`use...`) | Custom / Reusable | Extracting & sharing stateful component logic (e.g. `useFetch`, `useDebounce`) | **Part 2 (50%)** |
